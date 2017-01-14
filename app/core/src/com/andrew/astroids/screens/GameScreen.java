@@ -1,6 +1,7 @@
 package com.andrew.astroids.screens;
 
-import com.andrew.astroids.Astroids;
+import com.andrew.astroids.AsteroidInputProcessor;
+import com.andrew.astroids.Asteroids;
 import com.andrew.astroids.entities.Ship;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -11,14 +12,14 @@ import com.badlogic.gdx.graphics.GL20;
  */
 public class GameScreen extends ScreenAdapter
 {
-    Astroids astroids;
-    Ship ship = new Ship();
-    float direction = 1;
+    Asteroids asteroids;
+    Ship ship;
 
-
-    public GameScreen(Astroids astroids)
+    public GameScreen(Asteroids asteroids)
     {
-        this.astroids = astroids;
+        this.asteroids = asteroids;
+        ship = new Ship();
+        Gdx.input.setInputProcessor(new AsteroidInputProcessor(ship));
     }
 
     @Override

@@ -11,15 +11,16 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Ship
 {
-    Sprite sprite;
-    SpriteBatch spriteBatch;
-    Vector2 position;
-    Vector2 velocity;
-    Vector2 thrusterVelocity;
+    public Sprite sprite;
+    public SpriteBatch spriteBatch;
+    public Vector2 position;
+    public Vector2 velocity;
+    public Vector2 thrusterVelocity;
+    public boolean activateThruster;
 
     public Ship()
     {
-        sprite = new Sprite(new Texture("badlogic.jpg"));
+        sprite = new Sprite(new Texture("DurrrSpaceShip.png"));
         sprite.setSize(50, 50);
         position = new Vector2(Gdx.graphics.getWidth() / 2f - (sprite.getWidth() / 2f),
                 Gdx.graphics.getHeight() / 2f - (sprite.getHeight() / 2f));
@@ -27,12 +28,15 @@ public class Ship
         sprite.setX(position.x);
         sprite.setY(position.y);
         velocity = new Vector2(100, 100);
-        thrusterVelocity = new Vector2(0, -100);
+        thrusterVelocity = new Vector2(0, 100);
     }
 
     public void render(float delta) //delta is time passed
     {
-        velocity.add(thrusterVelocity.x*delta, thrusterVelocity.y*delta);
+        if(activateThruster == true)
+        {
+            velocity.add(thrusterVelocity.x * delta, thrusterVelocity.y * delta);
+        }
         position.x += (delta * velocity.x);
         position.y += (delta * velocity.y);
         wrap();

@@ -3,7 +3,7 @@ package com.andrew.astroids;
 import com.andrew.astroids.screens.GameScreen;
 import com.badlogic.gdx.Game;
 
-public class Astroids extends Game
+public class Asteroids extends Game
 {
 
 	@Override
